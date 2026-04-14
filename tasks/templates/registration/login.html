@@ -1,0 +1,27 @@
+﻿<!DOCTYPE html>
+<html lang="sk">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prihlasenie</title>
+</head>
+<body>
+    <h1>Prihlas sa do rodinnej todo appky</h1>
+
+    {% if form.non_field_errors %}
+        <ul>
+            {% for error in form.non_field_errors %}
+                <li>{{ error }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Prihlasit</button>
+    </form>
+
+    <p><a href="#">Zabudol si heslo?</a></p>
+</body>
+</html>

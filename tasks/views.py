@@ -1,8 +1,10 @@
 from django.shortcuts import redirect, render
 from .forms import TaskForm
 from .models import Task
+from django.contrib.auth.decorators import login_required
 
 
+@login_required
 def home(request):
     if request.method == 'POST':
         form = TaskForm(request.POST)
