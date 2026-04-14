@@ -6,33 +6,44 @@
     <title>{{ app_name }}</title>
 </head>
 <body>
-    <h1>{{ app_name }}</h1>
-    <p>{{ message }}</p>
+    <nav style="display: flex; justify-content: space-between; align-items: center; padding: 10px; background-color: #f0f0f0;">
+        <span>Ahoj, {{ user.username }}</span>
 
-    <h2>Pridat novy task</h2>
-    <form method="post">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button type="submit">Pridat task</button>
-    </form>
+        <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit">Odhlásiť</button>
+        </form>
+    </nav>
 
-    <h2>Zoznam taskov</h2>
-    <ul>
-        {% for task in tasks %}
-            <li>
-                <strong>Nazov:</strong> {{ task.title }}<br>
-                <strong>Popis:</strong> {{ task.description }}<br>
-                <strong>Stav:</strong>
-                {% if task.done %}
-                    Hotovo
-                {% else %}
-                    Nehotovo
-                {% endif %}
-            </li>
-            <hr>
-        {% empty %}
-            <li>Zatial nie su ziadne tasky.</li>
-        {% endfor %}
-    </ul>
+    <main style="margin: 20px;">
+        <h1>{{ app_name }}</h1>
+        <p>{{ message }}</p>
+
+        <h2>Pridat novy task</h2>
+        <form method="post" action="">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit">Pridat task</button>
+        </form>
+
+        <h2>Zoznam taskov</h2>
+        <ul>
+            {% for task in tasks %}
+                <li>
+                    <strong>Nazov:</strong> {{ task.title }}<br>
+                    <strong>Popis:</strong> {{ task.description }}<br>
+                    <strong>Stav:</strong>
+                    {% if task.done %}
+                        Hotovo
+                    {% else %}
+                        Nehotovo
+                    {% endif %}
+                </li>
+                <hr>
+            {% empty %}
+                <li>Zatial nie su ziadne tasky.</li>
+            {% endfor %}
+        </ul>
+    </main>
 </body>
 </html>
