@@ -3,16 +3,29 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{app_name}}</title>
+    <title>{{ app_name }}</title>
 </head>
 <body>
-    <h1>{{app_name}}</h1>
-    <p>{{message}}</p>
-    <h2>ukazkove tasky</h2>
-<ul>
-    {% for task in tasks %}
-    <li>{{task}}</li>
-    {% endfor %}
-</ul>
+    <h1>{{ app_name }}</h1>
+    <p>{{ message }}</p>
+
+    <h2>Zoznam taskov</h2>
+
+    <ul>
+        {% for task in tasks %}
+            <li>
+                <strong>{{ task.title }}</strong>
+                {% if task.done %}
+                    - Hotovo
+                {% else %}
+                    - Nehotovo
+                {% endif %}
+                <br>
+                {{ task.description }}
+            </li>
+        {% empty %}
+            <li>Zatial nie su ziadne tasky.</li>
+        {% endfor %}
+    </ul>
 </body>
 </html>
