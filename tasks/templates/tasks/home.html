@@ -14,15 +14,16 @@
     <ul>
         {% for task in tasks %}
             <li>
-                <strong>{{ task.title }}</strong>
+                <strong>Nazov:</strong> {{ task.title }}<br>
+                <strong>Popis:</strong> {{ task.description }}<br>
+                <strong>Stav:</strong>
                 {% if task.done %}
-                    - Hotovo
+                    Hotovo
                 {% else %}
-                    - Nehotovo
+                    Nehotovo
                 {% endif %}
-                <br>
-                {{ task.description }}
             </li>
+            <hr>
         {% empty %}
             <li>Zatial nie su ziadne tasky.</li>
         {% endfor %}
