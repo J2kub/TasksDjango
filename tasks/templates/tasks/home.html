@@ -9,8 +9,14 @@
     <h1>{{ app_name }}</h1>
     <p>{{ message }}</p>
 
-    <h2>Zoznam taskov</h2>
+    <h2>Pridat novy task</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Pridat task</button>
+    </form>
 
+    <h2>Zoznam taskov</h2>
     <ul>
         {% for task in tasks %}
             <li>
